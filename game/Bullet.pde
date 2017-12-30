@@ -60,7 +60,7 @@ class Bullet extends ObjectBase {
   
   boolean redraw_bullet() {
     if(direction == "left") {
-      x += 0;
+      x += 10;
       if(x >= 800) {
         is_limit = true;
       }
@@ -82,6 +82,10 @@ class Bullet extends ObjectBase {
     }
     draw_bullet();
     return is_limit;
+  }
+  
+  HashMap get_bullet_axis() {
+    return get_axis(x, y);
   }
   
 }

@@ -11,12 +11,11 @@ class ObjectBase {
     return pmouseY;
   }
   
-  boolean get_random_bool() {
-    float f = random(1.0);
-    if(f < 0.5) {
-      return true;
-    }
-    return false;
+  HashMap get_axis(float x, float y) {
+    HashMap<String, Float> axis = new HashMap<String, Float>();
+    axis.put("x", x);
+    axis.put("y", y);
+    return axis;
   }
   
 }

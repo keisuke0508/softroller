@@ -29,4 +29,8 @@ class Player extends ObjectBase {
     y = get_mouse_y() - 50;
   }
   
+  HashMap get_player_axis() {
+    return get_axis(x, y);
+  }
+  
 }
