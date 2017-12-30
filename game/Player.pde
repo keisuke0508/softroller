@@ -1,4 +1,4 @@
-class Player {
+class Player extends ObjectBase {
   PImage img, img_right, img_left, img_fall;
   float x, y;
   
@@ -19,7 +19,7 @@ class Player {
     image(img, x, y, 100, 100);
   }
   
-  void rewrite_player() {
+  void redraw_player() {
     get_cursor_axis();
     image(img, x, y, 100, 100);
   }
@@ -27,14 +27,6 @@ class Player {
   void get_cursor_axis() {
     x = get_mouse_x() - 50;
     y = get_mouse_y() - 50;
-  }
-  
-  float get_mouse_x() {
-    return pmouseX;
-  }
-  
-  float get_mouse_y() {
-    return pmouseY;
   }
   
 }
