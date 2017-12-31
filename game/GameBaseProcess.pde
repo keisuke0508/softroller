@@ -1,9 +1,32 @@
 class GameBaseProcess {
+  int start_count;
+  boolean is_started;
   
   GameBaseProcess() {
+    start_count = 3;
+    is_started = false;
   }
   
-  void start_process() {
+  boolean start_process() {
+    draw_count();
+    judge_started();
+    start_count -= 1;
+    delay(1000);
+    return(is_started);
+  }
+  
+  void judge_started() {
+    if(start_count == 0) {
+      is_started = true;
+    }else {
+      is_started = false;
+    }
+  }
+  
+  void draw_count() {
+    textSize(128);
+    fill(0, 0, 255);
+    text(String.valueOf(start_count), 360, 330);
   }
   
   void finish_process() {
