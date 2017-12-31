@@ -1,18 +1,18 @@
 class GameBaseProcess {
   int start_count;
-  boolean is_started;
+  boolean is_started, is_attacked;
   
   GameBaseProcess() {
     start_count = 3;
     is_started = false;
+    is_attacked = false;
   }
   
-  boolean start_process() {
+  void start_process() {
     draw_count();
     judge_started();
     start_count -= 1;
     delay(1000);
-    return(is_started);
   }
   
   void judge_started() {
@@ -25,14 +25,15 @@ class GameBaseProcess {
   
   void draw_count() {
     textSize(128);
+    textAlign(CENTER);
     fill(0, 0, 255);
-    text(String.valueOf(start_count), 360, 330);
+    text(String.valueOf(start_count), 400, 300);
   }
   
   void finish_process() {
   }
   
-  boolean attack_process(HashMap<String, Float> player, HashMap<String, Float> bullet) {
+  void attack_judge_process(HashMap<String, Float> player, HashMap<String, Float> bullet) {
     float player_x, player_y, bullet_x, bullet_y;
     player_x = player.get("x");
     player_y = player.get("y");
@@ -40,9 +41,10 @@ class GameBaseProcess {
     bullet_y = bullet.get("y");
     if(player_x < bullet_x && player_x + 80 > bullet_x &&
         player_y < bullet_y && player_y + 80 > bullet_y) {
-          return(true);
-        }
-        return(false);
+          is_attacked = true;
+    }else {
+      is_attacked = false;
+    }
   }
   
 }

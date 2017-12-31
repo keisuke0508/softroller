@@ -2,8 +2,6 @@ Player p;
 Bullet b;
 GameBaseProcess processer;
 
-boolean is_started = false, is_limit, is_attacked;
-
 void setup() {
   size(800, 600);
   p = new Player();
@@ -13,21 +11,21 @@ void setup() {
 
 void draw() {
   background(255);
-  if(!is_started) {
+  if(!processer.is_started) {
     p.set_player();
-    is_started = processer.start_process();
+    processer.start_process();
   }else {
-    is_limit = b.redraw_bullet();
-    if(is_limit) {
+    b.redraw_bullet();
+    if(b.is_limit) {
       b = null;
       b = new Bullet();
       b.draw_bullet();
     }
-    if(is_attacked) {
+    if(processer.is_attacked) {
       p.finish_process();
     }else {
       p.redraw_player();
-      is_attacked = processer.attack_process(p.get_player_axis(), b.get_bullet_axis());
+      processer.attack_judge_process(p.get_player_axis(), b.get_bullet_axis());
     }
   }
 }
