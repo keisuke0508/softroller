@@ -33,6 +33,11 @@ class GameBaseProcess {
   }
   
   void finish_process() {
+    textSize(72);
+    textAlign(CENTER);
+    fill(0, 0, 255);
+    text("GameOver", 400, 200);
+    text("Score: " + String.valueOf(score), 400, 400);
   }
   
   void attack_judge_process(HashMap<String, Float> player, HashMap<String, Float> bullet) {
