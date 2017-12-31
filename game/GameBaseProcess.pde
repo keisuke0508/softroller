@@ -1,14 +1,21 @@
+import processing.sound.*;
+
 class GameBaseProcess {
   int start_count;
   boolean is_title, is_started, is_attacked;
   int score;
+  PApplet game;
+  SoundFile main_bgm, fired_bgm, attacked_bgm;
   
-  GameBaseProcess() {
+  GameBaseProcess(PApplet p) {
+    game = p;
     start_count = 3;
     is_started = false;
     is_attacked = false;
     is_title = true;
     score = 0;
+    load_bgms();
+    play_main_bgm();
   }
   
   void title_process() {
@@ -18,6 +25,24 @@ class GameBaseProcess {
     text("SampleGame", 400, 300);
     textSize(36);
     text("please push enter key", 400, 500);
+  }
+  
+  void load_bgms() {
+    main_bgm = new SoundFile(game, "main.mp3");
+    fired_bgm = new SoundFile(game, "fired.mp3");
+    attacked_bgm = new SoundFile(game, "attacked.mp3");
+  }
+  
+  void play_main_bgm() {
+    main_bgm.loop();
+  }
+  
+  void play_fired_bgm() {
+    fired_bgm.play();
+  }
+  
+  void play_attacked_bgm() {
+    attacked_bgm.play();
   }
   
   void finish_title() {

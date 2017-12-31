@@ -6,7 +6,7 @@ void setup() {
   size(800, 600);
   p = new Player();
   b = new Bullet();
-  processer = new GameBaseProcess();
+  processer = new GameBaseProcess(this);
 }
 
 void draw() {
