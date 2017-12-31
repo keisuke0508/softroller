@@ -1,11 +1,13 @@
-import processing.sound.*;
+import ddf.minim.*;
 
 class GameBaseProcess {
   int start_count;
   boolean is_title, is_started, is_attacked;
   int score;
   PApplet game;
-  SoundFile main_bgm, fired_bgm, attacked_bgm;
+  Minim minim;
+  AudioPlayer main_bgm;
+  AudioSample select_bgm, count_bgm, fired_bgm, attacked_bgm;
   
   GameBaseProcess(PApplet p) {
     game = p;
@@ -14,6 +16,7 @@ class GameBaseProcess {
     is_attacked = false;
     is_title = true;
     score = 0;
+    minim = new Minim(game);
     load_bgms();
     play_main_bgm();
   }
@@ -28,21 +31,31 @@ class GameBaseProcess {
   }
   
   void load_bgms() {
-    main_bgm = new SoundFile(game, "main.mp3");
-    fired_bgm = new SoundFile(game, "fired.mp3");
-    attacked_bgm = new SoundFile(game, "attacked.mp3");
+    main_bgm = minim.loadFile("main.mp3");
+    select_bgm = minim.loadSample("select.mp3");
+    count_bgm = minim.loadSample("count.mp3");
+    fired_bgm = minim.loadSample("fired.mp3");
+    attacked_bgm = minim.loadSample("attacked.mp3");
   }
   
   void play_main_bgm() {
     main_bgm.loop();
   }
   
+  void play_select_bgm() {
+    select_bgm.trigger();
+  }
+  
+  void play_count_bgm() {
+    count_bgm.trigger();
+  }
+  
   void play_fired_bgm() {
-    fired_bgm.play();
+    fired_bgm.trigger();
   }
   
   void play_attacked_bgm() {
-    attacked_bgm.play();
+    attacked_bgm.trigger();
   }
   
   void finish_title() {
@@ -51,6 +64,7 @@ class GameBaseProcess {
   
   void start_process() {
     draw_count();
+    play_count_bgm();
     judge_started();
     start_count -= 1;
     delay(1000);
@@ -99,6 +113,7 @@ class GameBaseProcess {
     if(player_x < bullet_x && player_x + 80 > bullet_x &&
         player_y < bullet_y && player_y + 80 > bullet_y) {
           is_attacked = true;
+          play_attacked_bgm();
     }else {
       is_attacked = false;
     }

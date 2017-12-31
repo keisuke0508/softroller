@@ -23,6 +23,7 @@ void draw() {
         b = null;
         b = new Bullet();
         b.draw_bullet();
+        processer.play_fired_bgm();
       }
       if(processer.is_attacked) {
         p.finish_process();
@@ -49,5 +50,6 @@ void keyPressed() {
       b = null;
       setup();
     }
+    processer.play_select_bgm();
   }
 }
