@@ -1,13 +1,27 @@
 class GameBaseProcess {
   int start_count;
-  boolean is_started, is_attacked;
+  boolean is_title, is_started, is_attacked;
   int score;
   
   GameBaseProcess() {
     start_count = 3;
     is_started = false;
     is_attacked = false;
+    is_title = true;
     score = 0;
+  }
+  
+  void title_process() {
+    textSize(72);
+    textAlign(CENTER);
+    fill(0, 0, 255);
+    text("SampleGame", 400, 300);
+    textSize(36);
+    text("please push enter key", 400, 500);
+  }
+  
+  void finish_title() {
+    is_title = false;
   }
   
   void start_process() {

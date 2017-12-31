@@ -11,34 +11,42 @@ void setup() {
 
 void draw() {
   background(255);
-  if(!processer.is_started) {
-    p.set_player();
-    processer.start_process();
+  if(processer.is_title) {
+    processer.title_process();
   }else {
-    b.redraw_bullet();
-    if(b.is_limit) {
-      b = null;
-      b = new Bullet();
-      b.draw_bullet();
-    }
-    if(processer.is_attacked) {
-      p.finish_process();
-      if(p.y >= 500) {
-        processer.finish_process();
-      }
+    if(!processer.is_started) {
+      p.set_player();
+      processer.start_process();
     }else {
-      p.redraw_player();
-      processer.attack_judge_process(p.get_player_axis(), b.get_bullet_axis());
-      processer.add_score();
+      b.redraw_bullet();
+      if(b.is_limit) {
+        b = null;
+        b = new Bullet();
+        b.draw_bullet();
+      }
+      if(processer.is_attacked) {
+        p.finish_process();
+        if(p.y >= 500) {
+          processer.finish_process();
+        }
+      }else {
+        p.redraw_player();
+        processer.attack_judge_process(p.get_player_axis(), b.get_bullet_axis());
+        processer.add_score();
+      }
     }
   }
 }
 
 void keyPressed() {
   if(key == ENTER) {
-    processer = null;
-    p = null;
-    b = null;
-    setup();
+    if(processer.is_title) {
+      processer.finish_title();
+    }else {
+      processer = null;
+      p = null;
+      b = null;
+      setup();
+    }
   }
 }
