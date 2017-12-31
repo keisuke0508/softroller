@@ -33,3 +33,12 @@ void draw() {
     }
   }
 }
+
+void keyPressed() {
+  if(key == ENTER) {
+    processer = null;
+    p = null;
+    b = null;
+    setup();
+  }
+}
