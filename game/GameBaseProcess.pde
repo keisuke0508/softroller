@@ -1,11 +1,13 @@
 class GameBaseProcess {
   int start_count;
   boolean is_started, is_attacked;
+  int score;
   
   GameBaseProcess() {
     start_count = 3;
     is_started = false;
     is_attacked = false;
+    score = 0;
   }
   
   void start_process() {
@@ -45,6 +47,10 @@ class GameBaseProcess {
     }else {
       is_attacked = false;
     }
+  }
+  
+  void add_score() {
+    score += 1;
   }
   
 }
