@@ -54,6 +54,17 @@ class GameBaseProcess {
     text("Score: " + String.valueOf(score), 400, 400);
   }
   
+  void add_score() {
+    score += 1;
+  }
+  
+  void draw_score() {
+    textSize(18);
+    textAlign(CENTER);
+    fill(0);
+    text("Score: " + String.valueOf(score), 700, 20);
+  }
+  
   void attack_judge_process(HashMap<String, Float> player, HashMap<String, Float> bullet) {
     float player_x, player_y, bullet_x, bullet_y;
     player_x = player.get("x");
@@ -66,10 +77,6 @@ class GameBaseProcess {
     }else {
       is_attacked = false;
     }
-  }
-  
-  void add_score() {
-    score += 1;
   }
   
 }

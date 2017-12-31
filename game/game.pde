@@ -33,6 +33,7 @@ void draw() {
         p.redraw_player();
         processer.attack_judge_process(p.get_player_axis(), b.get_bullet_axis());
         processer.add_score();
+        processer.draw_score();
       }
     }
   }
