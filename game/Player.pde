@@ -10,9 +10,9 @@ class Player extends ObjectBase {
   }
   
   void load_images() {
-    img_right = loadImage("heli_right.png");
-    img_left = loadImage("heli_left.png");
-    img_fall = loadImage("heli_fall.png");
+    img_right = loadImage("img/heli_right.png");
+    img_left = loadImage("img/heli_left.png");
+    img_fall = loadImage("img/heli_fall.png");
   }
   
   void set_player() {

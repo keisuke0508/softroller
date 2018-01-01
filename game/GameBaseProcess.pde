@@ -31,11 +31,11 @@ class GameBaseProcess {
   }
   
   void load_bgms() {
-    main_bgm = minim.loadFile("main.mp3");
-    select_bgm = minim.loadSample("select.mp3");
-    count_bgm = minim.loadSample("count.mp3");
-    fired_bgm = minim.loadSample("fired.mp3");
-    attacked_bgm = minim.loadSample("attacked.mp3");
+    main_bgm = minim.loadFile("bgm/main.mp3");
+    select_bgm = minim.loadSample("bgm/select.mp3");
+    count_bgm = minim.loadSample("bgm/count.mp3");
+    fired_bgm = minim.loadSample("bgm/fired.mp3");
+    attacked_bgm = minim.loadSample("bgm/attacked.mp3");
   }
   
   void play_main_bgm() {
