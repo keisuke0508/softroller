@@ -1,18 +1,29 @@
 Player p;
 Bullet b;
 GameBaseProcess processer;
-SerialConnector connector;
+Controller controller;
 
-void setup() {
-  size(800, 600);
+boolean softroller;
+
+void initialize() {
   p = new Player();
   b = new Bullet();
   processer = new GameBaseProcess(this);
-  connector = new SerialConnector(this);
+}
+
+void setup() {
+  size(800, 600);
+  try {
+    controller = new Controller(this);
+    softroller = true;
+  }catch(Exception e) {
+    println(e);
+    softroller = false;
+  }
+  initialize();
 }
 
 void draw() {
-  println(connector.is_available());
   background(255);
   if(processer.is_title) {
     processer.title_process();
@@ -34,7 +45,14 @@ void draw() {
           processer.finish_process();
         }
       }else {
-        p.redraw_player();
+        if(softroller) {
+          controller.read_values();
+          p.redraw_player_by_softroller(controller.get_axis_input());
+          println(controller.x_axis);
+          println(controller.y_axis);
+        }else {
+          p.redraw_player();
+        }
         processer.attack_judge_process(p.get_player_axis(), b.get_bullet_axis());
         processer.add_score();
         processer.draw_score();
@@ -48,10 +66,10 @@ void keyPressed() {
     if(processer.is_title) {
       processer.finish_title();
     }else {
-      processer = null;
       p = null;
       b = null;
-      setup();
+      processer = null;
+      initialize();
     }
     processer.play_select_bgm();
   }

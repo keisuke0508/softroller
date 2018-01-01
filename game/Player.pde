@@ -21,7 +21,54 @@ class Player extends ObjectBase {
   
   void redraw_player() {
     get_cursor_axis();
+    correct_axis();
     image(img, x, y, 100, 100);
+  }
+  
+  void redraw_player_by_softroller(HashMap axis) {
+    get_horizontal_motion(String.valueOf(axis.get("x")));
+    get_vertical_motion(String.valueOf(axis.get("y")));
+    correct_axis();
+    image(img, x, y, 100, 100);
+  }
+  
+  void get_horizontal_motion(String _x){
+    if(_x == "LEFT") {
+      x -= 10;
+    }else if(_x == "RIGHT") {
+      x += 10;
+    }else {
+    }
+  }
+  
+  void get_vertical_motion(String _y) {
+    if(_y == "DOWN") {
+      y += 10;
+    }else if(_y == "UP") {
+      y -= 10;
+    }else {
+    }
+  }
+  
+  void correct_axis() {
+    correct_x();
+    correct_y();
+  }
+  
+  void correct_x() {
+    if(x < 0) {
+      x = 0;
+    }else if(x > 800) {
+      x = 700;
+    }
+  } 
+  
+  void correct_y() {
+    if(y < 0) {
+      y = 0;
+    }else if(y > 600) {
+      y = 500;
+    }
   }
   
   void get_cursor_axis() {
