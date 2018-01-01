@@ -1,15 +1,18 @@
 Player p;
 Bullet b;
 GameBaseProcess processer;
+SerialConnector connector;
 
 void setup() {
   size(800, 600);
   p = new Player();
   b = new Bullet();
   processer = new GameBaseProcess(this);
+  connector = new SerialConnector(this);
 }
 
 void draw() {
+  println(connector.is_available());
   background(255);
   if(processer.is_title) {
     processer.title_process();

@@ -104,7 +104,8 @@ class GameBaseProcess {
     text("Score: " + String.valueOf(score), 700, 20);
   }
   
-  void attack_judge_process(HashMap<String, Float> player, HashMap<String, Float> bullet) {
+  void attack_judge_process(HashMap<String, Float> player, 
+                              HashMap<String, Float> bullet) {
     float player_x, player_y, bullet_x, bullet_y;
     player_x = player.get("x");
     player_y = player.get("y");
