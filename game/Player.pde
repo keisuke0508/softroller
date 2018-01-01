@@ -35,8 +35,10 @@ class Player extends ObjectBase {
   void get_horizontal_motion(String _x){
     if(_x == "LEFT") {
       x -= 10;
+      change_image(img_left);
     }else if(_x == "RIGHT") {
       x += 10;
+      change_image(img_right);
     }else {
     }
   }
