@@ -3,10 +3,15 @@ class Bullet extends ObjectBase {
   String direction;
   boolean is_limit;
   
-  Bullet() {
+  Bullet(boolean softroller, HashMap<String, Float> player) {
     direction = get_bullet_direction();
-    x = get_initial_bullet_x();
-    y = get_initial_bullet_y();
+    if(softroller) {
+      x = get_initial_bullet_x_softroller(player.get("x"));
+      y = get_initial_bullet_y_softroller(player.get("y"));
+    }else {
+      x = get_initial_bullet_x();
+      y = get_initial_bullet_y();
+    }
     is_limit = false;
   }
   
@@ -44,6 +49,34 @@ class Bullet extends ObjectBase {
       _y = get_mouse_y();
     }else if(direction == "right") {
       _y = get_mouse_y();
+    }else if(direction == "up") {
+      _y = 0;
+    }else if(direction == "under") {
+      _y = 600;
+    }
+    return _y;
+  }
+  
+  float get_initial_bullet_x_softroller(float px) {
+    float _x = 0;
+    if(direction == "left") {
+      _x = 0;
+    }else if(direction == "right") {
+      _x = 800;
+    }else if(direction == "up") {
+      _x = px + 50;
+    }else if(direction == "under") {
+      _x = px + 50;
+    }
+    return _x;
+  }
+  
+  float get_initial_bullet_y_softroller(float py) {
+    float _y = 0;
+    if(direction == "left") {
+      _y = py + 50;
+    }else if(direction == "right") {
+      _y = py + 50;
     }else if(direction == "up") {
       _y = 0;
     }else if(direction == "under") {

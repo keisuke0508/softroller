@@ -7,7 +7,7 @@ boolean softroller;
 
 void initialize() {
   p = new Player();
-  b = new Bullet();
+  b = new Bullet(softroller, p.get_player_axis());
   processer = new GameBaseProcess(this);
 }
 
@@ -35,7 +35,7 @@ void draw() {
       b.redraw_bullet();
       if(b.is_limit) {
         b = null;
-        b = new Bullet();
+        b = new Bullet(softroller, p.get_player_axis());
         b.draw_bullet();
         processer.play_fired_bgm();
       }
@@ -48,8 +48,6 @@ void draw() {
         if(softroller) {
           controller.read_values();
           p.redraw_player_by_softroller(controller.get_axis_input());
-          println(controller.x_axis);
-          println(controller.y_axis);
         }else {
           p.redraw_player();
         }
