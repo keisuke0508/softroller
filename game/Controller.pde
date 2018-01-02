@@ -44,14 +44,14 @@ class Controller {
   }
   
   boolean get_right_pressure() {
-    if(right_val < 1000) {
+    if(right_val < 500) {
       return(true);
     }
     return(false);
   }
   
   boolean get_left_pressure() {
-    if(left_val < 1000) {
+    if(left_val < 500) {
       return(true);
     }
     return(false);
