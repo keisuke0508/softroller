@@ -32,6 +32,14 @@ void draw() {
   background(255);
   if(processer.is_title) {
     processer.title_process();
+    if(softroller) {
+      controller.read_values();
+      HashMap<String, Boolean> pressure = controller.get_pressure_input();
+      if(pressure.get("right") && pressure.get("left")) {
+        processer.finish_title();
+        processer.play_select_bgm();
+      }
+    }
   }else {
     if(!processer.is_started) {
       p.set_player();
