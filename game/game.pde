@@ -6,9 +6,14 @@ Controller controller;
 boolean softroller;
 
 void initialize() {
+  if(processer != null) {
+    processer = null;
+    p = null;
+    b = null;
+  }
+  processer = new GameBaseProcess(this);
   p = new Player();
   b = new Bullet(softroller, p.get_player_axis());
-  processer = new GameBaseProcess(this);
 }
 
 void setup() {
@@ -43,6 +48,14 @@ void draw() {
         p.finish_process();
         if(p.y >= 500) {
           processer.finish_process();
+          if(softroller) {
+            controller.read_values();
+            HashMap<String, Boolean> pressure = controller.get_pressure_input();
+            if(pressure.get("right") && pressure.get("left")) {
+              initialize();
+              processer.play_select_bgm();
+            }
+          }
         }
       }else {
         if(softroller) {
@@ -64,9 +77,6 @@ void keyPressed() {
     if(processer.is_title) {
       processer.finish_title();
     }else {
-      p = null;
-      b = null;
-      processer = null;
       initialize();
     }
     processer.play_select_bgm();
