@@ -91,7 +91,7 @@ class Player extends ObjectBase {
   
   void fall_effect() {
     if(y <= 500) {
-      y += 10;
+      y += 30;
     }
     image(img, x, y, 100, 100);
   }
