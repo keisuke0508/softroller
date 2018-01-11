@@ -8,6 +8,7 @@ class GameBaseProcess {
   Minim minim;
   AudioPlayer main_bgm;
   AudioSample select_bgm, count_bgm, fired_bgm, attacked_bgm;
+  PImage bg_img;
   
   GameBaseProcess(PApplet p) {
     game = p;
@@ -19,6 +20,8 @@ class GameBaseProcess {
     minim = new Minim(game);
     load_bgms();
     play_main_bgm();
+    load_bg_img();
+    set_bg_img();
   }
   
   void title_process() {
@@ -36,6 +39,14 @@ class GameBaseProcess {
     count_bgm = minim.loadSample("bgm/count.mp3");
     fired_bgm = minim.loadSample("bgm/fired.mp3");
     attacked_bgm = minim.loadSample("bgm/attacked.mp3");
+  }
+  
+  void load_bg_img() {
+    bg_img = loadImage("img/background.png");
+  }
+  
+  void set_bg_img() {
+    image(bg_img, 0, 0, 800, 600);
   }
   
   void play_main_bgm() {

@@ -30,6 +30,7 @@ void setup() {
 
 void draw() {
   background(255);
+  processer.set_bg_img();
   if(processer.is_title) {
     processer.title_process();
     if(softroller) {
