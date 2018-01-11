@@ -9,3 +9,5 @@
 ### コントローラ
 Arduino, 圧力センサFSR406, 3軸加速度センサKXR94-2050, StandardFirmata.  
 圧力センサは決定ボタン, 3軸加速度センサはヘリコプターの操作に使用.
+
+![softroller](./img/softroller.jpg)
