@@ -14,7 +14,7 @@ Arduino, 圧力センサFSR406, 3軸加速度センサKXR94-2050, StandardFirmat
 ![softroller](./img/softroller.jpg)
 
 ##### コントローラ内部
-![softroller](./img/softroller_all.jpg)
+![softroller](./img/sortroller_all.jpg)
 
 ##### センサモジュール
 ![softroller](./img/softroller_sensor.jpg)
