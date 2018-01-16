@@ -28,9 +28,9 @@ class GameBaseProcess {
     textSize(72);
     textAlign(CENTER);
     fill(0, 0, 255);
-    text("HelicopterGame", 400, 300);
+    text("Helicopter", 400, 300);
     textSize(36);
-    text("please push enter key", 400, 500);
+    text("push enter to start", 400, 500);
   }
   
   void load_bgms() {
