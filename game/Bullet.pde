@@ -93,22 +93,22 @@ class Bullet extends ObjectBase {
   
   boolean redraw_bullet() {
     if(direction == "left") {
-      x += 30;
+      x += 10;
       if(x >= 800) {
         is_limit = true;
       }
     }else if(direction == "right") {
-      x -= 30;
+      x -= 10;
       if(x <= 0) {
         is_limit = true;
       }
     }else if(direction == "up") {
-      y += 30;
+      y += 10;
       if(y >= 600) {
         is_limit = true;
       }
     }else if(direction == "under") {
-      y -= 30;
+      y -= 10;
       if(y <= 0) {
         is_limit = true;
       }

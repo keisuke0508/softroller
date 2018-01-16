@@ -21,7 +21,6 @@ class GameBaseProcess {
     load_bgms();
     play_main_bgm();
     load_bg_img();
-    set_bg_img();
   }
   
   void title_process() {
@@ -31,6 +30,13 @@ class GameBaseProcess {
     text("Helicopter", 400, 300);
     textSize(36);
     text("push enter to start", 400, 500);
+  }
+  
+  void write_max_log(String log) {
+    textAlign(CENTER);
+    fill(0, 0, 255);
+    textSize(24);
+    text(log, 400, 550);
   }
   
   void load_bgms() {

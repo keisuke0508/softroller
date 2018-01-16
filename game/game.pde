@@ -2,6 +2,8 @@ Player p;
 Bullet b;
 GameBaseProcess processer;
 Controller controller;
+SaveGameLog save_log;
+LoadGameLog load_log;
 
 boolean softroller;
 
@@ -12,6 +14,8 @@ void initialize() {
     b = null;
   }
   processer = new GameBaseProcess(this);
+  save_log = new SaveGameLog();
+  load_log = new LoadGameLog();
   p = new Player();
   b = new Bullet(softroller, p.get_player_axis());
 }
@@ -30,9 +34,9 @@ void setup() {
 
 void draw() {
   background(255);
-  processer.set_bg_img();
   if(processer.is_title) {
     processer.title_process();
+    processer.write_max_log(load_log.get_log());
     if(softroller) {
       controller.read_values();
       HashMap<String, Boolean> pressure = controller.get_pressure_input();
@@ -61,6 +65,7 @@ void draw() {
             controller.read_values();
             HashMap<String, Boolean> pressure = controller.get_pressure_input();
             if(pressure.get("right") && pressure.get("left")) {
+              save_log.save_log(processer.score);
               initialize();
               processer.play_select_bgm();
             }
